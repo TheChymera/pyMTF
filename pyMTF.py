@@ -57,8 +57,16 @@ for i, v in enumerate(data_names):
         img_gray = np.rot90(img_gray, 3)
     elif orient == 3:
         img_gray = np.rot90(img_gray, 2)   
-    elif orient == 8:
-        img_gray = np.rot90(img_gray, 1)   
+    elif orient == 8:   
+        img_gray = np.rot90(img_gray, 1) 
+    elif orient == 2:
+        img_gray = np.fliplr(img_gray)
+    elif orient == 4:
+        img_gray = np.flipud(img_gray)
+    elif orient == 5:
+        img_gray = np.fliplr(np.rot90(img_gray, 1))
+    elif orient == 7:
+        img_gray = np.fliplr(np.rot90(img_gray, 3))
     else: img_gray = img_gray    
 
     height = np.shape(img_gray)[0] 

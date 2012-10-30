@@ -8,9 +8,7 @@ Transfer Function which it tires to approximate.
 
 The algorithm is sketchy and offers only a rough estimate of what would be the actual MTF. The 
 script was tested and optimized for images shot with a Nikon D5100. This may be especially 
-important for the exif aperture key which seems to be nonstandard in Nikons. Additionally the 
-picture orientation interpretation will only work for orientations commonly obtained when 
-shooting with "normal" DSLRs.
+important for the exif aperture key which seems to be nonstandard in Nikons.
 
 
 Released under the GPLv3 license
