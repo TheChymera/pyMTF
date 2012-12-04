@@ -41,6 +41,11 @@ dialog.destroy()
 ranking = np.r_['1,3,0', data_names, np.zeros(np.shape(data_names)), np.zeros(np.shape(data_names))]
 ranking = np.reshape(ranking, (len(data_names),3))
 
+img_exif=Image.open(data_names[0])
+exifs = img_exif._getexif()
+lens_focal_length = np.array(exifs.get(0x920A))[0]/np.array(exifs.get(0x920A))[1] # dodgy way to identify the lens. Apparently the PIL exif function can't read the lens-relevant tags
+lens_name = str(lens_focal_length) + 'mm '
+
 for i, v in enumerate(data_names):
     img = Image.open(v)
     exif = img._getexif()
@@ -48,6 +53,7 @@ for i, v in enumerate(data_names):
     orient = exif.get(0x0112) # get exif orientation key (0x0112 = 274)
     aperture = np.array(exif.get(0x829D)) # get eixf aperture key (nikon d5100 for which this was initially written uses 0x829D instead of the usual 0x9202)
     aperture = aperture[0] / aperture[1] # the exif aperture key contains a whole number (aperture*10) and a 10 (nikon d5100 only?)
+    camera_model = exif.get(0x110)
         
     if np.ndim(img) == 3:           #make grayscale, do nothing if image array is not 3D
         img_gray = img.sum(axis=2)
@@ -106,6 +112,7 @@ ax.set_xlim(0, ind.max())
 ax.set_ylabel('Semi-quantitative Un-sharpness Score')
 ax.set_xlabel('Aperture')
 ax.set_xticks(ind + width/2)
+ax.set_title('Unsharpness of '+ camera_model +' with '+ lens_name+' lens')
 ax.set_xticklabels(means[:,1])
 for tick in ax.axes.get_xticklines():
     tick.set_visible(False)
