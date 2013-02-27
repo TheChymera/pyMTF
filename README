@@ -2,14 +2,10 @@ pyMTF 0.0.1
 26 Okt. 2012
 =======
 
-Python script for gauging the sharpness of optical set-ups. Named MTF after the Modulation 
-Transfer Function which it tires to approximate. 
+Python script for gauging the sharpness of optical set-ups. 
+
+The script is named after the Modulation Transfer Function which it tires to approximate. The algorithm is sketchy and offers only a rough estimate of what would be the actual MTF. The script was tested and optimized for images shot with a Nikon D5100. This may be especially important for the exif aperture key which seems to be nonstandard in Nikons.
 
 
-The algorithm is sketchy and offers only a rough estimate of what would be the actual MTF. The 
-script was tested and optimized for images shot with a Nikon D5100. This may be especially 
-important for the exif aperture key which seems to be nonstandard in Nikons.
-
-
-Released under the GPLv3 license
-Project led by Horea Christian (address all correspondence to: h.chr@mail.ru)
+Released under the GPLv3 license. 
+Project led by Horea Christian (address all correspondence to: h.chr@mail.ru).
